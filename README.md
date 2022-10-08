@@ -1,6 +1,6 @@
 # Image Preview for Neovim
 
-- <leader>p - show image for current file
+- `<leader>p` - image preview for file under cursor
 
 ## Supported Plugins
 
