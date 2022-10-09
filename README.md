@@ -34,3 +34,11 @@ require("image_preview").setup({})
 
 - [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
 
+## Roadmap
+
+- [x] Windows support
+- [ ] macOS support (WIP)
+- [ ] Linux support (WIP)
+
+
+
