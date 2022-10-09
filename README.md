@@ -2,7 +2,7 @@
 
 Neovim plugin for image previews.
 
-At moment depends on WezTerm image terminal support.
+At moment depends on [WezTerm](https://wezfurlong.org/wezterm/) image terminal support.
 
 ![image](https://user-images.githubusercontent.com/430272/194723584-3af9e272-b6b9-456a-af88-e1f79e5213e5.png)
 
