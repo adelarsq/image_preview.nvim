@@ -41,8 +41,11 @@ require("image_preview").setup({})
 ## Roadmap
 
 - [x] Windows support. Depends on PowerShell
-- [ ] macOS support (WIP)
-- [ ] Linux support (WIP)
+- [x] macOS support
+- [x] Linux support
+- [x] bmp, png and jpg
+- [ ] svg
+
 
 
 
