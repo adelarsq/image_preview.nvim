@@ -36,7 +36,7 @@ require("image_preview").setup({})
 
 ## Features
 
-- Plugins:
+- [x] Plugins:
    - [x] [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
    - [ ] NerdTree
 - [x] Windows support. Depends on PowerShell
