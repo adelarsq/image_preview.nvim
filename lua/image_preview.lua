@@ -30,9 +30,17 @@ function M.PreviewImage()
         local absolutePath = imported.get_node_at_cursor().absolute_path
 
         if IsImage(absolutePath) then
-            local command = "silent !wezterm cli split-pane -- powershell wezterm imgcat "
-            command = command .. absolutePath
-            command = command .. " ; pause"
+            local command = ""
+
+            if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
+                command = "silent !wezterm cli split-pane -- powershell wezterm imgcat "
+                command = command .. absolutePath
+                command = command .. " ; pause"
+            else
+                command = "silent !wezterm cli split-pane -- bash -c 'wezterm imgcat "
+                command = command .. absolutePath
+                command = command .. " ; read'"
+            end
 
             vim.api.nvim_command(command)
         else
