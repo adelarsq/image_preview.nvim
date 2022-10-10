@@ -34,12 +34,11 @@ require("image_preview").setup({})
 
 - `<leader>p` - image preview for file under cursor
 
-## Supported Plugins
+## Features
 
-- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
-
-## Roadmap
-
+- Plugins:
+   - [x] [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+   - [ ] NerdTree
 - [x] Windows support. Depends on PowerShell
 - [x] macOS support
 - [x] Linux support
