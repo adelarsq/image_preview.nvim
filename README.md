@@ -36,7 +36,7 @@ require("image_preview").setup({})
 
 ## Features
 
-- Terminals:
+- [x] Terminals:
    - [x] [WezTerm](https://wezfurlong.org/wezterm/)
    - [ ] iTerm2
 - [x] Plugins:
