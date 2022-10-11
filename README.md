@@ -36,6 +36,9 @@ require("image_preview").setup({})
 
 ## Features
 
+- Terminals:
+   - [x] [WezTerm](https://wezfurlong.org/wezterm/)
+   - [ ] iTerm2
 - [x] Plugins:
    - [x] [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
    - [ ] NerdTree
