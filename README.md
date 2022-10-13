@@ -39,6 +39,7 @@ require("image_preview").setup({})
 - [x] Terminals:
    - [x] [WezTerm](https://wezfurlong.org/wezterm/)
    - [ ] iTerm2
+   - [ ] [Alacrity](https://github.com/alacritty/alacritty). Waiting for [pull/4763](https://github.com/alacritty/alacritty/pull/4763)
 - [x] Plugins:
    - [x] [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
    - [ ] NerdTree
