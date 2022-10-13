@@ -49,6 +49,8 @@ require("image_preview").setup({})
 - [x] bmp, png and jpg
 - [ ] svg
 
+## Related Plugins
 
+- [samodostal/image.nvim](https://github.com/samodostal/image.nvim)
 
 
