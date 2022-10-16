@@ -40,6 +40,13 @@ require("image_preview").setup({})
    - [x] [WezTerm](https://wezfurlong.org/wezterm/)
    - [ ] iTerm2
    - [ ] [Alacrity](https://github.com/alacritty/alacritty). Waiting for [pull/4763](https://github.com/alacritty/alacritty/pull/4763)
+- [x] Environments:
+   - [x] Windows
+      - [x] PowerShell - WezTerm
+      - [ ] DOS
+      - [ ] WSL
+   - [x] Linux - WezTerm
+   - [x] macOS - WezTerm
 - [x] Plugins:
    - [x] [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
    - [ ] NerdTree
