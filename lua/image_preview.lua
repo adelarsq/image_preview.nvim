@@ -18,6 +18,8 @@ local function IsImage(url)
         return true
     elseif extension == '.png' then
         return true
+    elseif extension == '.gif' then
+        return true
     end
 
     return false
