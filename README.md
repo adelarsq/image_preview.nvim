@@ -14,6 +14,18 @@ At moment depends on [WezTerm](https://wezfurlong.org/wezterm/) image terminal s
 Plug 'https://github.com/adelarsq/image_preview.nvim'
 ```
 
+### Lazy
+
+```lua
+{
+    'https://github.com/adelarsq/image_preview.nvim',
+    event = 'VeryLazy',
+    config = function()
+        require("image_preview").setup()
+    end
+},
+```
+
 ## Configuration
 
 Vim Script:
