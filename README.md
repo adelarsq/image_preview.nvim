@@ -46,7 +46,7 @@ require("image_preview").setup({})
 
 To use on [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) it's necessary to add a command on the setup, as shows bellow:
 
-```
+```lua
 filesystem = {
   window = {
     mappings = {
