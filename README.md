@@ -42,6 +42,30 @@ Lua:
 require("image_preview").setup({})
 ```
 
+### neo-tree.nvim
+
+To use on [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) it's necessary to add a command on the setup, as shows bellow:
+
+```
+filesystem = {
+  window = {
+    mappings = {
+      ["<leader>p"] = "image_wezterm", -- " or another map
+    },
+  },
+  commands = {
+    image_wezterm = function(state)
+      local node = state.tree:get_node()
+      if node.type == "file" then
+        require("image_preview").PreviewImage(node.path)
+      end
+    end,
+  },
+},
+```
+
+Special thanks for @pysan3 for [point that](https://github.com/adelarsq/image_preview.nvim/issues/3#issuecomment-1560816413).
+
 ## Keybinds
 
 - `<leader>p` - image preview for file under cursor
@@ -61,6 +85,8 @@ require("image_preview").setup({})
    - [x] macOS - WezTerm
 - [x] Plugins:
    - [x] [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+   - [x] [neo-tree.nvim)](https://github.com/nvim-neo-tree/neo-tree.nvim)
+   - [x] [oil.nvim](https://github.com/stevearc/oil.nvim)
    - [ ] NerdTree
 - [x] Windows support. Depends on PowerShell
 - [x] macOS support
