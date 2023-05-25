@@ -30,7 +30,7 @@ function M.PreviewImage(absolutePath)
 
         if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
             command = "silent !wezterm cli split-pane -- powershell wezterm imgcat "
-            command = command .. absolutePath
+            command = command .. "'" .. absolutePath .. "'"
             command = command .. " ; pause"
         else
             command = "silent !wezterm cli split-pane -- bash -c 'wezterm imgcat "
