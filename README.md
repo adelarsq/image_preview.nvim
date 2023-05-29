@@ -47,21 +47,23 @@ require("image_preview").setup({})
 To use on [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) it's necessary to add a command on the setup, as shows bellow:
 
 ```lua
-filesystem = {
-  window = {
-    mappings = {
-      ["<leader>p"] = "image_wezterm", -- " or another map
+require("neo-tree").setup({
+  filesystem = {
+    window = {
+      mappings = {
+        ["<leader>p"] = "image_wezterm", -- " or another map
+      },
+    },
+    commands = {
+      image_wezterm = function(state)
+        local node = state.tree:get_node()
+        if node.type == "file" then
+          require("image_preview").PreviewImage(node.path)
+        end
+      end,
     },
   },
-  commands = {
-    image_wezterm = function(state)
-      local node = state.tree:get_node()
-      if node.type == "file" then
-        require("image_preview").PreviewImage(node.path)
-      end
-    end,
-  },
-},
+}
 ```
 
 Special thanks for @pysan3 for [point that](https://github.com/adelarsq/image_preview.nvim/issues/3#issuecomment-1560816413).
