@@ -97,5 +97,5 @@ Special thanks for @pysan3 for [point that](https://github.com/adelarsq/image_pr
 ## Related Plugins
 
 - [samodostal/image.nvim](https://github.com/samodostal/image.nvim)
-
+- [nvim-telescope/telescope-media-files.nvim](https://github.com/nvim-telescope/telescope-media-files.nvim)
 
