@@ -8,7 +8,7 @@ local function GetFileExtension(url)
     return url:match("^.+(%..+)$")
 end
 
-local function IsImage(url)
+function M.IsImage(url)
     local extension = GetFileExtension(url)
 
     if extension == '.bmp' then
