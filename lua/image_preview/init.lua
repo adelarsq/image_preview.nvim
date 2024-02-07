@@ -25,7 +25,7 @@ function M.IsImage(url)
 end
 
 function M.PreviewImage(absolutePath)
-    if IsImage(absolutePath) then
+    if M.IsImage(absolutePath) then
         local command = ""
 
         if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
