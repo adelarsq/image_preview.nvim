@@ -8,6 +8,16 @@ local function GetFileExtension(url)
     return url:match("^.+(%..+)$")
 end
 
+local function GetTerm()
+    if os.getenv('KITTY_PID') ~= nil then
+        return 'kitty'
+    elseif os.getenv('WEZTERM_PANE') ~= nil then
+        return 'wezterm'
+    else
+        return nil
+    end
+end
+
 function M.IsImage(url)
     local extension = GetFileExtension(url)
 
@@ -25,17 +35,32 @@ function M.IsImage(url)
 end
 
 function M.PreviewImage(absolutePath)
+    local term = GetTerm()
+
     if M.IsImage(absolutePath) then
         local command = ""
 
-        if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
-            command = "silent !wezterm cli split-pane -- powershell wezterm imgcat "
-            command = command .. "'" .. absolutePath .. "'"
-            command = command .. " ; pause"
+        if term == 'wezterm' then
+            if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
+                command = "silent !wezterm cli split-pane -- powershell wezterm imgcat "
+                    .. "'" .. absolutePath .. "'"
+                    .. " ; pause"
+            else
+                command = "silent !wezterm cli split-pane -- bash -c 'wezterm imgcat "
+                    .. absolutePath
+                    .. " ; read'"
+            end
+        elseif term == 'kitty' then
+            if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
+                print('Kitty not supported on windows')
+            else
+                command = 'silent !kitten @ launch --type=window kitten icat --hold '
+                    .. '\''
+                    .. absolutePath
+                    .. '\''
+            end
         else
-            command = "silent !wezterm cli split-pane -- bash -c 'wezterm imgcat "
-            command = command .. absolutePath
-            command = command .. " ; read'"
+            print('No support for this terminal.')
         end
 
         vim.api.nvim_command(command)
