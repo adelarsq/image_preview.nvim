@@ -76,6 +76,7 @@ Special thanks for @pysan3 for [point that](https://github.com/adelarsq/image_pr
 
 - [x] Terminals:
    - [x] [WezTerm](https://wezfurlong.org/wezterm/)
+   - [x] [Kitty](https://sw.kovidgoyal.net/kitty/)
    - [ ] iTerm2
    - [ ] [Alacrity](https://github.com/alacritty/alacritty). Waiting for [pull/4763](https://github.com/alacritty/alacritty/pull/4763)
 - [x] Environments:
@@ -83,8 +84,8 @@ Special thanks for @pysan3 for [point that](https://github.com/adelarsq/image_pr
       - [x] PowerShell - WezTerm
       - [ ] DOS
       - [ ] WSL
-   - [x] Linux - WezTerm
-   - [x] macOS - WezTerm
+   - [x] Linux - WezTerm, Kitty
+   - [x] macOS - WezTerm, Kitty
 - [x] Plugins:
    - [x] [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
    - [x] [neo-tree.nvim)](https://github.com/nvim-neo-tree/neo-tree.nvim)
