@@ -1,8 +1,8 @@
 # Image Preview for Neovim
 
-Neovim plugin for image previews.
+Neovim plugin for image previews. It has support for Wezterm and Kitty right now.
 
-At moment depends on [WezTerm](https://wezfurlong.org/wezterm/) image terminal support.
+Using with [WezTerm](https://wezfurlong.org/wezterm/):
 
 ![image](https://user-images.githubusercontent.com/430272/194723584-3af9e272-b6b9-456a-af88-e1f79e5213e5.png)
 
