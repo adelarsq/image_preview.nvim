@@ -6,6 +6,10 @@ Using with [WezTerm](https://wezfurlong.org/wezterm/):
 
 ![image](https://user-images.githubusercontent.com/430272/194723584-3af9e272-b6b9-456a-af88-e1f79e5213e5.png)
 
+Using with [Kitty](https://sw.kovidgoyal.net/kitty/)
+
+![image preview with kitty](https://github.com/adelarsq/image_preview.nvim/assets/84777573/88c2dcac-1332-4c64-91af-a009e73e7399)
+
 ## Installing
 
 ### Plug
