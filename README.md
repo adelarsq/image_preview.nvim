@@ -15,14 +15,14 @@ Using with [Kitty](https://sw.kovidgoyal.net/kitty/)
 ### Plug
 
 ```
-Plug 'https://github.com/adelarsq/image_preview.nvim'
+Plug 'adelarsq/image_preview.nvim'
 ```
 
 ### Lazy
 
 ```lua
 {
-    'https://github.com/adelarsq/image_preview.nvim',
+    'adelarsq/image_preview.nvim',
     event = 'VeryLazy',
     config = function()
         require("image_preview").setup()
