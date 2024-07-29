@@ -96,14 +96,14 @@ function M.PreviewImageOil()
     end
 end
 
-function M.setup()
-    local command =
-    "au Filetype NvimTree nmap <buffer> <silent> <leader>p :lua require('image_preview').PreviewImageNvimTree()<cr>"
-    vim.api.nvim_command(command)
+function M.setup(config)
+    config = config or {}
+    local preview_key = config.preview_key or "<leader>p"
 
-    local command =
-    "au Filetype oil nmap <buffer> <silent> <leader>p :lua require('image_preview').PreviewImageOil()<cr>"
-    vim.api.nvim_command(command)
+    vim.api.nvim_command("au Filetype NvimTree nmap <buffer> <silent> " ..
+    preview_key .. " :lua require('image_preview').PreviewImageNvimTree()<cr>")
+    vim.api.nvim_command("au Filetype oil nmap <buffer> <silent> " ..
+    preview_key .. " :lua require('image_preview').PreviewImageOil()<cr>")
 end
 
 return M
