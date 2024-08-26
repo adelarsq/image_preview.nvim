@@ -1,6 +1,7 @@
 # Image Preview for Neovim
 
 Neovim plugin for image previews. It has support for Wezterm and Kitty right now.
+Uses `feh` if terminal is not supported.
 
 Using with [WezTerm](https://wezfurlong.org/wezterm/):
 
@@ -74,7 +75,26 @@ Special thanks for @pysan3 for [point that](https://github.com/adelarsq/image_pr
 
 ## Keybinds
 
+Default keybindings:
+
 - `<leader>p` - image preview for file under cursor
+
+### Customize Keybinds
+
+```
+require('image_preview').setup({
+    mappings = {
+        PreviewImage = {
+                {"n"},
+                " p"
+        },
+    },
+```
+
+Arguments:
+
+- Modes
+- Keymap
 
 ## Features
 
@@ -101,8 +121,19 @@ Special thanks for @pysan3 for [point that](https://github.com/adelarsq/image_pr
 - [x] bmp, png and jpg
 - [ ] svg
 
+## Enable Feh
+
+For non-supported terminals allow the use of `feh` to display images.
+
+```
+require('image_preview').setup({
+    Options = {
+        useFeh = true
+    }
+})
+```
+
 ## Related Plugins
 
 - [samodostal/image.nvim](https://github.com/samodostal/image.nvim)
 - [nvim-telescope/telescope-media-files.nvim](https://github.com/nvim-telescope/telescope-media-files.nvim)
-

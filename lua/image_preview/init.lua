@@ -1,5 +1,16 @@
 local M = {}
 
+M.config = {
+		mappings = {
+				PreviewImage = {
+						{"n"},
+						"<leader>p"
+				}
+		},
+		Options = {
+				useFeh = false
+		}
+}
 -- local function GetFileName(url)
 --   return url:match("^.+/(.+)$")
 -- end
@@ -13,9 +24,8 @@ local function GetTerm()
         return 'kitty'
     elseif os.getenv('WEZTERM_PANE') ~= nil then
         return 'wezterm'
-    else
-        return nil
-    end
+		end
+		return nil
 end
 
 function M.IsImage(url)
@@ -59,7 +69,10 @@ function M.PreviewImage(absolutePath)
                     .. absolutePath
                     .. '\''
             end
-        else
+        elseif M.config.Options.useFeh then
+						-- fallback of feh for non-supported terminals @ Neo Sahadeo
+						command = 'silent !feh '.. absolutePath
+				else
             print('No support for this terminal.')
         end
 
@@ -74,9 +87,9 @@ function M.PreviewImageNvimTree()
     if use then
         local absolutePath = imported.get_node_at_cursor().absolute_path
         M.PreviewImage(absolutePath)
-    else
-        return ''
-    end
+				return 0
+		end
+		return 1
 end
 
 function M.PreviewImageOil()
@@ -90,20 +103,75 @@ function M.PreviewImageOil()
             local fullName = dir .. fileName
 
             M.PreviewImage(fullName)
+						return 0
         end
-    else
-        return ''
-    end
+		end
+		return 1
 end
 
-function M.setup()
-    local command =
-    "au Filetype NvimTree nmap <buffer> <silent> <leader>p :lua require('image_preview').PreviewImageNvimTree()<cr>"
-    vim.api.nvim_command(command)
+function M.setup(user_config)
+		-- Added support for custom keybinds @ Neo Sahadeo
+		-- Currently there is only 1 keybinds so this works
+		-- for now
+		local preview_keybind = nil
+		M.config = vim.tbl_deep_extend("force", M.config, user_config or {})
+		for action, mapping in pairs(M.config.mappings) do
+				if action == "PreviewImage" then
+						preview_keybind = {
+							modes = mapping[1],
+							keybind = mapping[2]
+						}
+				end
+		end
 
-    local command =
-    "au Filetype oil nmap <buffer> <silent> <leader>p :lua require('image_preview').PreviewImageOil()<cr>"
-    vim.api.nvim_command(command)
+		-- Added abstraction to autocommands @ Neo Sahadeo
+		local file_explorer_plugins = {
+				-- {
+				-- 		name = "neo-tree",
+				-- 		function_name = "PreviewImage",
+				-- 		pattern = "NeoTree"
+				-- },
+				{
+						name = "nvim-tree",
+						function_name = "PreviewImageNvimTree",
+						pattern = "NvimTree"
+				},
+				{
+						name = "oil",
+						function_name = "PreviewImageOil",
+						pattern = "oil"
+				},
+		}
+		local functionToRun = nil
+		local pattern = nil
+
+		for _, plugin in ipairs(file_explorer_plugins) do
+				local hasPlugin, _ = pcall(require, plugin.name)
+				if hasPlugin then
+						functionToRun = plugin.function_name
+						pattern = plugin.pattern
+						break
+				end
+		end
+
+		-- Explicit nil check
+		if functionToRun == nil or pattern == nil or preview_keybind == nil then
+				print("An internal error occured")
+				return 1
+		end
+
+		vim.api.nvim_create_autocmd("FileType", {
+				pattern = pattern,
+				callback = function()
+						vim.keymap.set(preview_keybind.modes,
+						preview_keybind.keybind,
+						function ()
+							local image_preview = require('image_preview')
+							return image_preview[functionToRun]()
+						end,
+						{ noremap = true, silent = true })
+				end,
+		})
 end
 
 return M
