@@ -46,18 +46,13 @@ function M.PreviewImage(absolutePath)
                     .. "'" .. absolutePath .. "'"
                     .. " ; pause"
             else
-                command = "silent !wezterm cli split-pane -- bash -c 'wezterm imgcat "
-                    .. absolutePath
-                    .. " ; read'"
+                command = "silent !wezterm cli split-pane -- bash -c 'wezterm imgcat \"" .. absolutePath .. "\" ; read'"
             end
         elseif term == 'kitty' then
             if vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1 then
                 print('Kitty not supported on windows')
             else
-                command = 'silent !kitten @ launch --type=window kitten icat --hold '
-                    .. '\''
-                    .. absolutePath
-                    .. '\''
+                command = 'silent !kitten @ launch --type=window kitten icat --hold "' .. absolutePath .. '"'
             end
         else
             print('No support for this terminal.')
