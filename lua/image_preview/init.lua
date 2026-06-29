@@ -65,9 +65,9 @@ function M.PreviewImage(absolutePath)
 end
 
 function M.PreviewImageNvimTree()
-    local use, imported = pcall(require, "nvim-tree.lib")
+    local use, imported = pcall(require, "nvim-tree.api")
     if use then
-        local absolutePath = imported.get_node_at_cursor().absolute_path
+        local absolutePath = imported.tree.get_node_under_cursor().absolute_path
         M.PreviewImage(absolutePath)
     else
         return ''
